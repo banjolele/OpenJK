@@ -308,7 +308,7 @@ int saberThrowDist[NUM_FORCE_POWER_LEVELS] =
 	0,//none
 	256,
 	400,
-	400
+	1000	//Cody - Original: 400
 };
 
 //NOTE: keep in synch with table above!!!
@@ -317,7 +317,7 @@ int saberThrowDistSquared[NUM_FORCE_POWER_LEVELS] =
 	0,//none
 	65536,
 	160000,
-	160000
+	1000000	//Cody - Original: 160000
 };
 
 int parryDebounce[NUM_FORCE_POWER_LEVELS] =
@@ -6538,10 +6538,10 @@ void WP_RunSaber( gentity_t *self, gentity_t *saber )
 			/*
 			if ( self->client->ps.saberEntityState == SES_RETURNING )
 			{//FIXME: if returning, move faster?
-				saberSpeed = 800;
+				saberSpeed = 2000; //Cody - Original: 800
 				if ( dist < 200 )
 				{
-					saberSpeed -= 400 - (dist*2);
+					saberSpeed -= 800 - (dist*2); //Cody - Original: -= 400 - (dist*2
 				}
 			}
 			*/
@@ -6676,7 +6676,7 @@ qboolean WP_SaberLaunch( gentity_t *self, gentity_t *saber, qboolean thrown, qbo
 		saber->s.apos.trDelta[1] = 800;
 		break;
 	case FORCE_LEVEL_3:
-		saber->s.apos.trDelta[1] = 1200;
+		saber->s.apos.trDelta[1] = 0;	//Cody - Original: 1200
 		break;
 	}
 
